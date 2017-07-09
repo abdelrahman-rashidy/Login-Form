@@ -1,9 +1,9 @@
 <?php
 $host='127.0.0.1';
-$user='root';
-$password='admin';
-$database='login';
-$conect=mysqli_connect($host, $user ,$password ,$database);
+$user='admin';
+$password='';
+$database='tr';
+$conn=mysqli_connect($host, $user ,$password ,$database);
 
 if(mysqli_connect_errno()){
 die('cannot connect to database field'.mysqli_connect_error());
@@ -18,7 +18,7 @@ $u_email = strip_tags($_POST["u_email"]);
 
 
 
-$query= ("INSERT INTO user(u_name,u_pass,u_email)VALUES ('".$u_name."','".$u_pass."','".$u_email."')");
+$query= ("INSERT INTO `tr`(`User_Name`, `Full_Name`, `E_Mail`, `PW`) VALUES ('".$u_name."','".$u_pass."','".$u_email."')");
 $DBadduser=mysqli_query($conn,$query);
 
 if($DBadduser){
@@ -31,5 +31,25 @@ echo"
 ";
 }
 }
-mysqli_close($conect);
+mysqli_close($conn);
 ?>
+
+
+
+
+
+<table>
+<?php 
+    foreach ($_POST as $key => $value) {
+        echo "<tr>";
+        echo "<td>";
+        echo $key;
+        echo "</td>";
+        echo "<td>";
+        echo $value;
+        echo "</td>";
+        echo "</tr>";
+    }
+?>
+</table>
+==

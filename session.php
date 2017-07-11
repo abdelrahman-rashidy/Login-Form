@@ -1,7 +1,8 @@
 <?php
    include('connecting.php');
 
-   $user_check =  $_SESSION['username'] ;
+   $user_check =  $_SESSION['username'] 
+   ;
    $find = "SELECT U_N from tr where U_N = '$user_check'";
    $ses_sql = mysqli_query($conn,$find);
    

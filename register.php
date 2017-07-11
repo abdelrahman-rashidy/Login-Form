@@ -31,7 +31,7 @@ require_once('connecting.php');
 
 <h2>welcome to your community</h2>
 <?php
-if(isset($_POST['submit'])){
+if(isset($_POST['asd'])){
 
  $u_name = $_POST["username"];
  $u_pass = $_POST["PW"];

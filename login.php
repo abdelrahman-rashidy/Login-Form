@@ -3,8 +3,8 @@
 $Log_user = $log_pass = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-$Log_user =  mysqli_real_escape_string($conn,$_POST['username']);
-$log_pass =  mysqli_real_escape_string($conn,$_POST['password']);
+ $Log_user =  $_POST['username'];
+ $log_pass =  $_POST['password'];
 }
 
   $SQuery = "SELECT id FROM tr WHERE U_N = '$Log_user' and PW = '$log_pass'";
@@ -35,19 +35,15 @@ if (!$result) {
 <?php 
 
 if($count == 1) {
-         session_register("Log_user");
-         $_SESSION['Log_user'] = $Log_user;
-         
-         header("location: welcome.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-         echo $error;
+    session_start();
+	
+	//$_SESSION['username']= "";
+	header("location: welcome.php");
+}else {
+ 	echo "Your Login Name or Password is invalid";
       }
 ?>
 
 </body>
 </html>
 
-<?php 
-	require_once("closeTheConnection.php");
- ?>

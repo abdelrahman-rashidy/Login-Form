@@ -1,16 +1,16 @@
 <?php
    include('connecting.php');
-   session_start();
-   
-   $user_check = $_SESSION['Log_user'];
-   
-   $ses_sql = mysqli_query($SQuery,"select U_N from tr where Log_user = '$user_check' ");
+
+   $user_check =  $_SESSION['username'] ;
+   $find = "SELECT U_N from tr where U_N = '$user_check'";
+   $ses_sql = mysqli_query($conn,$find);
    
    $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
    
-   $login_session = $row['username'];
+   $login_session = $row['U_N'];
    
-   if(!isset($_SESSION['Log_user'])){
-      header("location:login.php");
+   if(!isset($_SESSION['username'])){
+      echo "not working ";
+      //header("location:login.php");
    }
 ?>

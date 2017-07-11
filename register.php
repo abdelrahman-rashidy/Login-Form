@@ -1,5 +1,5 @@
 <?php 
-require_once('connecting.php')
+require_once('connecting.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,31 +11,31 @@ require_once('connecting.php')
 
 </head>
 <body>
-<form action="Index.php" method="post" accept-charset="utf-8">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" accept-charset="utf-8">
 
 
 	<br>
-	<input type="text" name="U_N" placeholder="User Name">
+	<input type="text" name="username" placeholder="User Name">
 	<br>
 	<br>
-	<input type="text" name="E_M" placeholder="E_mail">
+	<input type="text" name="e_mail" placeholder="E_mail">
 	<br>
 	<input type="password" name="PW" placeholder="password">
 	<br>
 	<br>
 	<input type="file" name="imageUpload" id="imageUpload">
 
-	<input type="submit" name="asd" value="sign up">
+	<input type="submit" name="submit" value="sign up">
 </form>
 
 
 <h2>welcome to your community</h2>
 <?php
-if(isset($_POST['asd'])){
- if(isset($_POST["asd"])){
- $u_name = $_POST["U_N"];
+if(isset($_POST['submit'])){
+
+ $u_name = $_POST["username"];
  $u_pass = $_POST["PW"];
- $Email = $_POST["E_M"];
+ $Email = $_POST["e_mail"];
 
 
 
@@ -43,17 +43,15 @@ $query= ("INSERT INTO tr( U_N , PW ,E_M ) VALUES ('$u_name','$u_pass','$Email')"
 $DBadduser=mysqli_query($conn,$query);
 
 if($DBadduser){
-echo"
-<br />success<br />
-";
+echo"<br />success<br />";
+header("location:welcome.php");
 }else{
 echo"
 <br />error<br />
 ";
 }
 }
-}
-require_once("closeTheConnection.php")
+
 ?>
 </body>
 </html>

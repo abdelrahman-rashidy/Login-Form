@@ -33,15 +33,18 @@ if (!$result) {
 	</form>
 
 <?php 
+setcookie("userNn",$Log_user,time()+50);
 
-if($count == 1) {
-    session_start();
-	
-	//$_SESSION['username']= "";
+if(isset($_COOKIE["userNn"])){
+    echo "<br>" .$_COOKIE["userNn"];
 	header("location: welcome.php");
-}else {
- 	echo "Your Login Name or Password is invalid";
-      }
+
+}
+else
+    echo "Session not set yet.";
+	
+
+
 ?>
 
 </body>
